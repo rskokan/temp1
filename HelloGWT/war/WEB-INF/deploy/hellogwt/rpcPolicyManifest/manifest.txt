@@ -1,0 +1,3 @@
+# Module hellogwt
+# RPC service class, partial path of RPC policy file
+hellogwt.client.GreetingService, 2CF52E2E648EFC6DBC02D2D63FAEA496.gwt.rpc
