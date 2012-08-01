@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jqmTweet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="cordova-1.7.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+<script>
+	(function($) {
+		var methods = {
+			initMainPage : function() {
+				var $page = $("#pageTweetList");
+				$page.data("rpp", 20);
+				$page.data("twitterUser", "rskokan");
+				$page.data("boolUpdate", false);
+
+				updateTwitterFeed();
+
+				$page.bind("pageshow", function(event, ui) {
+					if ($page.data("boolUpdate")) {
+						updateTwitterFeed();
+						$page.data("boolUpdate", false);
+					}
+				});
+			},
+
+			initDetailPage : function() {
+				var $page = $("#pageTweetDetail");
+				$page
+						.bind(
+								"pageshow",
+								function(event, ui) {
+									var objTweet = JSON.parse($page
+											.data("tweetJSON"));
+									var strHtml = '<p><img src="' + objTweet.profile_image_url + '" />'
+											+ objTweet.text + '</p>';
+									$page.find(".container-tweet")
+											.html(strHtml);
+								});
+			},
+
+			initSettingsPage : function() {
+				var $page = $("#pageSettings");
+				var $pageTweetList = $("#pageTweetList");
+
+				$page.find("username").change(function() {
+					var newVal = $(this).val();
+					$pageTweetList.data("twitterUser", newVal);
+					$pageTweetList.data("boolUpdate", true);
+				});
+
+				// simulate the change() event
+				$page.bind("pagebeforehide", function(event, ui) {
+					var newTweetsNr = parseInt($page.find("#tweetsNr").val(),
+							10);
+					var oldTweetsNr = parseint($pageTweetList.data("rpp", 10));
+					if (newTweetsNr != oldTweetsNr) {
+						$pageTweetList.data("rpp", newTweetsNr);
+						$pageTweetList.data("boolUpdate", true);
+					}
+				});
+
+				// initialize the current values
+				$page.bind("pageshow", function(event, ui) {
+					$page.find("#tweetsNr").val($pageTweetList.data("rpp"))
+							.slider("refresh");
+					$page.find("#username").val(
+							$pageTweetList.data("twitterUser"));
+				});
+			},
+
+			initAll : function() {
+				$().initApp("initMainPage");
+				$().initApp("initDetailPage");
+				$().initApp("initSettingsPage");
+			}
+		}
+
+		$.fn.initApp = function(method) {
+			if (methods[method]) {
+				return methods[method].apply(this, Array.prototype.slice.call(
+						arguments, 1))
+			} else if (typeof method === "object" || !method) {
+				return methods.initAll.apply(this, arguments);
+			} else {
+				$.error("Method " + method + " does not exist");
+			}
+		}
+	})(jQuery);
+
+	var updateTwitterFeed = function() {
+		var $page = $("#pageTweetList"); // it's a convention to prefix jQuery objects by $
+		var strUrl = "http://search.twitter.com/search.json?callback=?&rpp=";
+		//var strUrl = "http://search.twitter.com/search.json?rpp=";
+		strUrl += $page.data("rpp");
+		strUrl += "&q=from:" + $page.data("twitterUser");
+
+		$
+				.ajax({
+					url : strUrl,
+					dataType : "json",
+					success : function(data) {
+						$page.find(".content").empty();
+						$page.find(".content").html("<ul></ul>");
+						var $list = $page.find(".content ul");
+						for ( var i = 0; i < data.results.length; i++) {
+							var strHtml = '<li><a href="#pageTweetDetail">';
+							strHtml += '<img src="' + data.results[i].profile_image_url + '">';
+							strHtml += data.results[i].text;
+							strHtml += "</a></li>\n";
+
+							var $tweet = $(strHtml);
+							$list.append($tweet);
+							// store the tweet detail
+							$list.find("a:last").data("tweetJSON",
+									JSON.stringify(data.results[i]));
+						}
+
+						$list.listview();
+
+						$list.find("a").click(
+								function() {
+									var $this = $(this);
+									$("#pageTweetDetail").data("tweetJSON",
+											$this.data("tweetJSON"));
+								});
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("An error occurred: \n\ntextStatus=" + textStatus
+								+ "\n\nerrorThrown="
+								+ JSON.stringify(errorThrown));
+					}
+				});
+	}
+
+	////////////////////////
+
+	function onDeviceReady() {
+		//alert("onDeviceReady");
+		$.support.cors = true;
+		$.mobile.allowCrossDomainPages = true;
+		$().initApp();
+	}
+
+	//$(document).on("deviceready", onDeviceReady);
+	document.addEventListener("deviceready", onDeviceReady, false);
+	//$(document).ready(onDeviceReady); // for in-browser debugging
+</script>
+</head>
+<body>
+	<!-- Main tweet list page -->
+	<section id="pageTweetList" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>jqmTweet</h1>
+			<a href="#pageSettings" data-transition="flip" data-role="button" data-icon="gear" data-iconpos="notext"
+				class="ui-btn-right">Settings</a>
+		</header>
+		<div class="content" data-role="content">
+			<ul data-role="listview">
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+				<li><a href="#pageTweetDetail">Tweet!</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed">
+			<h1>Solucs jqmTweet</h1>
+		</footer>
+	</section>
+
+	<!-- Settings page -->
+	<section id="pageSettings" data-role="page">
+		<header data-role="header">
+			<h1>jqmTweet</h1>
+		</header>
+		<div class="content" data-role="content">
+			<h3>Settings</h3>
+			<div data-role="fieldcontain">
+				<label for="username">Twitter username:</label> <input type="text" id="username" placeholder="Twitter username" />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="tweetsNr">Number of tweets to display:</label> <input type="range" id="tweetsNr" name="tweetsNr" min="5"
+					max="50" />
+			</div>
+		</div>
+		<footer data-role="footer" data-position="fixed">
+			<h1>Solucs jqmTweet</h1>
+		</footer>
+	</section>
+
+	<!-- Tweet detail page -->
+	<section id="pageTweetDetail" data-role="page">
+		<header data-role="header">
+			<h1>jqmTweet</h1>
+		</header>
+		<div class="content" data-role="content">
+			<div class="container-tweet">
+				<p>Tweeeeeeeeeeeeeeeet!</p>
+			</div>
+		</div>
+		<footer data-role="footer" data-position="fixed">
+			<h1>Solucs jqmTweet</h1>
+		</footer>
+	</section>
+
+	<!-- Tweet error page dialog -->
+	<section id="pageError" data-role="page">
+		<header data-role="header">
+			<h1>jqmTweet</h1>
+		</header>
+		<div class="content" data-role="content"></div>
+		<footer data-role="footer" data-position="fixed">
+			<h1>Solucs jqmTweet</h1>
+		</footer>
+	</section>
+
+</body>
+
+
+</html>

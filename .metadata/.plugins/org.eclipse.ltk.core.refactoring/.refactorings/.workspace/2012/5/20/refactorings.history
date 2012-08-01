@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;/MMNotes&apos; to &apos;MMNotesPhonegap&apos;&#x0D;&#x0A;- Original element: &apos;MMNotes&apos;" description="Rename resource &apos;MMNotes&apos;" flags="7" id="org.eclipse.wst.jsdt.ui.rename.resource" input="/MMNotes" name="MMNotesPhonegap" stamp="1336917803744" version="1.0"/>
+</session>

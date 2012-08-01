@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContextState>
+<org.eclipse.mylyn.context.ui.editors>
+<MonitoredWindowOpenEditors class="org.eclipse.ui.internal.WorkbenchWindow" isActive="true" isLaunching="true" number="0">
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" partName="index.html" path="C:/dev/proj/workspace/MMNotes/assets/www/index.html" title="index.html" tooltip="MMNotes/assets/www/index.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MMNotes/assets/www/index.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8020" selectionTopPixel="2696"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="mm_notes.js" partName="mm_notes.js" path="C:/dev/proj/workspace/MMNotes/assets/www/mm_notes.js" title="mm_notes.js" tooltip="MMNotes/assets/www/mm_notes.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MMNotes/assets/www/mm_notes.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="2080" selectionTopPixel="1170"/>
+</editor>
+</MonitoredWindowOpenEditors>
+</org.eclipse.mylyn.context.ui.editors>
+</ContextState>

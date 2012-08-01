@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PhoneGap</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="cordova-1.7.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.js"></script>
+<script src="mm_notes.js"></script>
+</head>
+
+<body>
+
+	<!--  Notes list page -->
+	<section id="pageNotes" data-role="page">
+		<header data-role="header" data-position="fixed" data-id="nav-header-1">
+			<nav data-role="navbar">
+				<ul>
+					<li><a href="#pageTags">Tags</a></li>
+					<li><a href="#pageNotes" class="ui-btn-active ui-state-persist">Notes</a></li>
+					<li><a href="#pageFavorites">Favorites</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="content" data-role="content">
+			<ul data-role="listview" id="notesList">
+				<li><a href="#pageNoteDetail">Note title 1</a></li>
+				<li><a href="#pageNoteDetail">Note title 2</a></li>
+				<li><a href="#pageNoteDetail">Buy some sugar and als...</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" class="ui-bar" data-id="nav-footer-1">
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a"><button id="btnSearch" data-icon="search">Search</button></div>
+				<div class="ui-block-b"></div>
+				<div class="ui-block-c"><button id="btnNewNote" data-icon="new">Add Note</button></div>
+			</fieldset>
+		</footer>
+	</section>
+	
+
+	<!--  Tags list page -->
+	<section id="pageTags" data-role="page">
+		<header data-role="header" data-position="fixed" data-id="nav-header-1">
+			<nav data-role="navbar">
+				<ul>
+					<li><a href="#pageTags" class="ui-btn-active ui-state-persist">Tags</a></li>
+					<li><a href="#pageNotes">Notes</a></li>
+					<li><a href="#pageFavorites">Favorites</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="content" data-role="content">
+			<ul data-role="listview" id="tagsList">
+				<li><a href="#pageNotesForTag">Tag 1</a></li>
+				<li><a href="#pageNotesForTag">Tag 2</a></li>
+				<li><a href="#pageNotesForTag">Tag 3</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" class="ui-bar" data-id="nav-footer-1">
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a"></div>
+				<div class="ui-block-b"></div>
+				<div class="ui-block-c"><button id="btnAddTag" data-icon="new">Add Tag</button></div>
+			</fieldset>
+		</footer>
+	</section>
+	
+
+	<!--  Favorite notes list page -->
+	<section id="pageFavorites" data-role="page">
+		<header data-role="header" data-position="fixed" data-id="nav-header-1">
+			<nav data-role="navbar">
+				<ul>
+					<li><a href="#pageTags">Tags</a></li>
+					<li><a href="#pageNotes">Notes</a></li>
+					<li><a href="#pageFavorites" class="ui-btn-active ui-state-persist">Favorites</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="content" data-role="content">
+			<ul data-role="listview" id="favsList">
+				<li><a href="#pageNoteDetail">Note title 1</a></li>
+				<li><a href="#pageNoteDetail">Buy some sugar and als...</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" class="ui-bar" data-id="nav-footer-1">
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a"><button id="btnSearchFavorites" data-icon="search">Search</button></div>
+				<div class="ui-block-b"></div>
+				<div class="ui-block-c"></div>
+			</fieldset>
+		</footer>
+	</section>
+	
+
+	<!--  Note detail page -->
+	<section id="pageNoteDetail" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><input type="text" id="noteTitle" placeholder="Note title" /></div>
+				<div class="ui-block-b"><button id="btnHeaderNoteDetail">Save</button></div> <!--  this is to Save and also to Edit -->
+				
+				<div class="ui-block-a"><em><input type="text" id="noteDetailTags" readonly="readonly" placeholder="no tags" /></em></div>
+				<div class="ui-block-b"><button id="btnNoteDetailFav" data-icon="star" >Favorite</button></div>
+			</fieldset>
+		</header>
+		<div class="content" data-role="content">
+			<textarea id="noteBody"></textarea>
+		</div>
+		<footer data-role="footer" data-position="fixed" class="ui-bar">
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a">
+					<button id="btnAttachPhoto" data-icon="camera">Attach photo</button>
+					<button id="btnAttachAudio" data-icon="">Attach audio</button>
+				</div>
+				<div class="ui-block-b"></div>
+				<div class="ui-block-c">
+					<button id="btnDeleteNote" data-icon="delete">Delete</button>
+				</div>
+			</fieldset>
+		</footer>
+	</section>
+	
+	
+	<!--  List of notes tagged with a tag -->
+	<section id="pageNotesForTag" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>[ <span id="lblTagName">tag name</span> ]</h1>
+		</header>
+		<div class="content" data-role="content">
+			<ul data-role="listview" id="taggedNotesList">
+				<li><a href="#pageNoteDetail">Note title 1</a></li>
+				<li><a href="#pageNoteDetail">Buy some sugar and als...</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" class="ui-bar" data-id="nav-footer-1">
+			<fieldset class="ui-grid-b">
+				<div class="ui-block-a"><button id="btnSearchTaggedNotes" data-icon="search">Search</button></div>
+				<div class="ui-block-b"></div>
+				<div class="ui-block-c">
+					<button id="btnRenameTag" data-icon="">Rename</button>
+					<button id="btnDeleteTag" data-icon="delete">Delete</button>
+				</div>
+			</fieldset>
+		</footer>
+	</section>
+	
+	
+	<!-- Delete note dialog -->
+	<section id="dlgDeleteNote" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>Delete note?</h1>
+		</header>
+		<div class="content" data-role="content">
+			<p>Are you sure you want to delete the note?</p>
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button id="cancelDeleteNote" data-rel="back" data-inline="true">Cancel</button></div>
+				<div class="ui-block-b"><button id="confirmDeleteNote" data-inline="true">Delete</button></div>
+			</fieldset>
+		</div>
+	</section>
+	
+	
+	<!-- Delete tag dialog -->
+	<section id="dlgDeleteTag" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>Delete tag?</h1>
+		</header>
+		<div class="content" data-role="content">
+			<p>Are you sure you want to delete the tag?</p>
+			<p><em>(No worries, no notes with the tag will be deleted)</em></p>
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button id="cancelDeleteTag" data-rel="back" data-inline="true">Cancel</button></div>
+				<div class="ui-block-b"><button id="confirmDeleteTag" data-inline="true">Delete</button></div>
+			</fieldset>
+		</div>
+	</section>
+	
+	
+	<!-- Add tag dialog -->
+	<section id="dlgAddTag" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>Add tag</h1>
+		</header>
+		<div class="content" data-role="content">
+			<p>
+				<input type="text" id="newTagName" placeholder="Tag name" />
+			</p>
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button id="cancelAddTag" data-rel="back" data-inline="true">Cancel</button></div>
+				<div class="ui-block-b"><button id="confirmAddTag" data-inline="true">Add</button></div>
+			</fieldset>
+		</div>
+	</section>
+	
+	
+	<!-- Rename tag dialog -->
+	<section id="dlgRenameTag" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>Rename tag</h1>
+		</header>
+		<div class="content" data-role="content">
+			<p>
+				<input type="text" id="renameTagName" />
+			</p>
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button id="cancelRenameTag" data-rel="back" data-inline="true">Cancel</button></div>
+				<div class="ui-block-b"><button id="confirmRenameTag" data-inline="true">OK</button></div>
+			</fieldset>
+		</div>
+	</section>
+	
+	
+	<!-- Select tags for a note dialog -->
+	<section id="dlgTagsForNote" data-role="page">
+		<header data-role="header" data-position="fixed">
+			<h1>Select Tags</h1>
+		</header>
+		<div class="content" data-role="content">
+			<fieldset data-role="controlgroup" id="listTagsForNote">
+				<input type="checkbox" id="checkbox-1a" />
+				<label for="checkbox-1a">Cheetos</label>
+				
+				<input type="checkbox" id="checkbox-1b" />
+				<label for="checkbox-1b">Doritos</label>
+				
+				<input type="checkbox" id="checkbox-1c" />
+				<label for="checkbox-1c">Fritos</label>
+			</fieldset>
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button id="cancelTagsForNote" data-rel="back" data-inline="true">Cancel</button></div>
+				<div class="ui-block-b"><button id="confirmTagsForNote" data-inline="true">Set</button></div>
+			</fieldset>
+		</div>
+	</section>
+
+</body>
+</html>

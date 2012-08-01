@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Book.java&apos; to &apos;chapter10/src.main.java&apos;&#x0D;&#x0A;- Original project: &apos;chapter10&apos;&#x0D;&#x0A;- Destination element: &apos;chapter10/src.main.java&apos;&#x0D;&#x0A;- Original element: &apos;com.apress.javaee6.chapter10.Book.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/&lt;src.main.java" element1="/&lt;com.apress.javaee6.chapter10{Book.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1319479926722" units="1" version="1.0"/>
+</session>
