@@ -2,15 +2,17 @@
 <section name="Workbench">
 	<item value="0" key="org.eclipse.wst.jsdt.uiformatter_page.white_space.java_view.inner"/>
 	<item value="0" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.preferred_y"/>
-	<item value="505" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.preferred_x"/>
 	<item value="-1" key="org.eclipse.wst.jsdt.uiformatter_page.modify_dialog_tab_page.last_focus_index"/>
+	<item value="505" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.preferred_x"/>
 	<item value="0" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.last_focus"/>
-	<item value="800" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.preferred_height"/>
 	<item value="true" key="org.eclipse.wst.jsdt.ui.codeformatter.create_profile_dialog.open_edit"/>
+	<item value="800" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.preferred_height"/>
 	<item value="0" key="org.eclipse.wst.jsdt.uiformatter_page.white_space_tab_page.node"/>
 	<item value="993" key="org.eclipse.wst.jsdt.uiformatter_pagemodify_dialog.preferred_width"/>
 	<item value="1" key="org.eclipse.wst.jsdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
 	<section name="completion_proposal_size">
+	</section>
+	<section name="JavaElementSearchActions">
 	</section>
 	<section name="org.eclipse.wst.jsdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="true" key="group_libraries"/>
@@ -18,8 +20,6 @@
 		<item value="1" key="layout"/>
 		<item value="1" key="rootMode"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;packageExplorer group_libraries=&quot;1&quot; isWindowWorkingSet=&quot;false&quot; layout=&quot;1&quot; linkWithEditor=&quot;1&quot; rootMode=&quot;1&quot; workingSetName=&quot;&quot;&gt;&#x0D;&#x0A;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;&gt;&#x0D;&#x0A;&lt;xmlDefinedFilters&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.StaticsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.LocalTypesFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.ContainedLibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.CuAndClassFileFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer_patternFilterId_.*&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.wst.jsdt.ui.PackageExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;/xmlDefinedFilters&gt;&#x0D;&#x0A;&lt;/customFilters&gt;&#x0D;&#x0A;&lt;/packageExplorer&gt;" key="memento"/>
-	</section>
-	<section name="JavaElementSearchActions">
 	</section>
 	<section name="RefactoringWizard.preview">
 		<item value="400" key="height"/>
