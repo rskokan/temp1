@@ -33,14 +33,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="startRecording"
-            android:text="@string/button_video_capture" />
+            android:text="@string/button_start_capture" />
 
         <Button
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="stopRecording"
-            android:text="@string/button_video_capture" />
+            android:text="@string/button_stop_capture" />
     </LinearLayout>
 
     <!--  The camera preview -->

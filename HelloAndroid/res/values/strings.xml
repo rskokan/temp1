@@ -7,6 +7,7 @@
     <string name="button_send">Send</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_message">My Message</string>
-    <string name="button_video_capture">Capture Video</string>
+    <string name="button_start_capture">Capture Capture</string>
+    <string name="button_stop_capture">Stop Capture</string>
 
 </resources>

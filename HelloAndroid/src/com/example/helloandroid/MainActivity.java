@@ -1,6 +1,7 @@
 package com.example.helloandroid;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -66,7 +67,35 @@ public class MainActivity extends Activity {
 	startActivity(intent);
     }
 
-    @SuppressLint("NewApi")
+    @TargetApi(14)
+    @Override
+    protected void onResume() {
+	super.onResume();
+
+	camera = Camera.open();
+	cameraPreview = new CameraPreview(this, camera);
+	FrameLayout previewFrameLayout = (FrameLayout) findViewById(R.id.camera_preview);
+	previewFrameLayout.addView(cameraPreview);
+	camera.getParameters().setRecordingHint(true);
+    }
+
+    @Override
+    protected void onPause() {
+	super.onPause();
+
+	try {
+	    if (camera != null) {
+		camera.stopPreview();
+		camera.setPreviewDisplay(null);
+		camera.release();
+		camera = null;
+	    }
+	} catch (Exception e) {
+	    Log.e(TAG, e.getMessage());
+	    e.printStackTrace();
+	}
+    }
+
     public void startRecording(View view) {
 	try {
 	    if (!Utils.isIntentAvailable(this, MediaStore.ACTION_VIDEO_CAPTURE)) {
@@ -74,13 +103,6 @@ public class MainActivity extends Activity {
 		return;
 	    }
 
-	    camera = Camera.open();
-	    cameraPreview = new CameraPreview(this, camera);
-	    FrameLayout previewFrameLayout = (FrameLayout) findViewById(R.id.camera_preview);
-	    previewFrameLayout.addView(cameraPreview);
-
-	    camera.getParameters().setRecordingHint(true);
-	    
 	    camera.unlock();
 	    recorder = new MediaRecorder();
 	    recorder.setCamera(camera);
@@ -112,6 +134,7 @@ public class MainActivity extends Activity {
 	if (recorder != null) {
 	    recorder.stop();
 	    releaseMediaRecorder();
+	    camera.lock();
 	}
 
 	Log.i(TAG, "Recording stopped");
@@ -122,12 +145,6 @@ public class MainActivity extends Activity {
 	    recorder.reset();
 	    recorder.release();
 	    recorder = null;
-	}
-	if (camera != null) {
-	    camera.lock();
-	    camera.release();
-	    // camera.stopPreview();
-	    camera.release();
 	}
     }
 }
